@@ -10,23 +10,21 @@ const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
     origin: "*",
-    methods: ["GET", "POST"]
   }
 });
 
-app.use(cors());
-
-app.get("/notificacao", (req, res) => {
-  io.emit('notificacao', { message: 'Olá!' });
-  res.send("Notificação enviada ao cliente", 200);
-});
-
 io.on('connection', (socket) => {
-  console.log('A user connected');
+
+  console.log('New user connected')
+
+  socket.on('mensagem', (data) => {
+    io.emit('mensagem', {message: data.message, socket_id: socket.id})
+  });
 
   socket.on('disconnect', () => {
     console.log('A user disconnected');
   });
+
 });
 
 server.listen(PORT, () => {

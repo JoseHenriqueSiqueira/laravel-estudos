@@ -7,4 +7,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/inicio', [ControllerMain::class, 'index']);
+Route::get('/chat', [ControllerMain::class, 'chat']);

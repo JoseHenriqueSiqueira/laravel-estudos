@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 
 class ControllerMain extends Controller
 {
-    function index() 
+    function chat() 
     {
-        return view('master');
+        return view('chat');
     }
 }
