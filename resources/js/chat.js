@@ -17,7 +17,7 @@ socket.on("mensagem", (data) => {
             <div class="row">
                 <div class="col-md-8 msg-in">
                     <input class="form-control input-msg" value="${data.message}" disabled>
-                    <img src="https://cdn-icons-png.flaticon.com/128/4413/4413664.png" width="40" height="40">
+                    <span style="margin-top: 6px; margin-left: 6px;">:${socket_id.slice(0, 2)}</span>
                 </div>
             </div>
         `
@@ -25,7 +25,7 @@ socket.on("mensagem", (data) => {
         msg = `
             <div class="row">
                 <div class="col-md-8 msg-out">
-                    <img src="https://cdn-icons-png.flaticon.com/128/4413/4413664.png" width="40" height="40">
+                    <span style="margin-right: 5px; margin-top: 6px;">${data.socket_id.slice(0, 2)}:</span>
                     <input class="form-control input-msg" value="${data.message}" disabled>
                 </div>
             </div>
