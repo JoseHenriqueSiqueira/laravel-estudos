@@ -1,7 +1,6 @@
 const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
-const cors = require('cors'); // Adiciona o pacote CORS
 
 const app = express();
 const PORT = 3000;
@@ -14,8 +13,6 @@ const io = new Server(server, {
 });
 
 io.on('connection', (socket) => {
-
-  console.log('New user connected')
 
   socket.on('mensagem', (data) => {
     io.emit('mensagem', {message: data.message, socket_id: socket.id})
