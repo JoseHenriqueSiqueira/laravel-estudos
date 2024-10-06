@@ -1,0 +1,19 @@
+body {
+    background: #eee;
+    padding: 20px;
+}
+
+.emails {
+    background-color: #fff;
+    border-top: #3c8dbc solid 3px;
+    max-height: 40vh;
+    height: 40vh;
+}
+
+.emails-body, .emails-body-done {
+    max-height: 29.5vh;
+    height: 29.5vh;
+    overflow: auto;
+    overflow-x: hidden;
+
+}

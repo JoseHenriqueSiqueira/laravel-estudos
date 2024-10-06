@@ -8,3 +8,8 @@ Route::get('/', function () {
 });
 
 Route::get('/chat', [ControllerMain::class, 'chat']);
+
+Route::prefix('emails')->group(function () {
+    Route::get('/', [ControllerMain::class, 'emails']);
+    Route::post('/enviar', [ControllerMain::class, 'emailsQueue'])->name('emailsQueue');
+});
