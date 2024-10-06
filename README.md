@@ -28,16 +28,63 @@ Este projeto inclui uma funcionalidade de **chat em tempo real**, utilizando o *
 
 #### Requisitos para o Chat
 
-1. Abra um terminal na pasta raiz do projeto e inicie o servidor Laravel:
+1. Abra um terminal na pasta raiz do projeto e rode a migration:
+   ```bash
+   php artisan migrate:fresh
+   ```
+2. Abra outro terminal na pasta raiz do projeto e inicie o servidor Laravel:
    ```bash
    php artisan serve
    ```
-2. Abra outro terminal e inicialize as dependências JavaScript com o comando:
+3. Abra outro terminal e inicialize as dependências JavaScript com o comando:
    ```bash
    npm run dev
    ```
-3. Por fim, abra um terceiro terminal dentro da pasta node-server e rode o seguinte comando:
+4. Por fim, abra um terceiro terminal dentro da pasta node-server e rode o seguinte comando:
    ```bash
    npm run setup
    ```
    Após seguir corretamente esses passos, você pode acessar o chat em duas abas diferentes do navegador através do link: http://localhost:8000/chat.
+
+
+<br></br>
+### Envio de múltiplos e-mails através de fila.
+
+Esta funcionalidade permite o envio múltiplo de e-mails utilizando **queues**, **jobs**, **Laravel Reverb**, **events**, e **broadcasting**.
+
+#### Requisitos múltiplos e-mails através de fila.
+
+1. Abra um terminal na pasta raiz do projeto e rode a migration:
+   ```bash
+   php artisan migrate:fresh
+   ```
+2. Abra outro terminal e inicie o servidor Laravel:
+   ```bash
+   php artisan serve
+   ```
+3. Abra outro terminal e inicialize as dependências JavaScript com o comando:
+   ```bash
+   npm run dev
+   ```
+4. Abra outro terminal para instalar o broadcasting (por trás dos panos, esse comando também instala o Reverb):
+   ```bash
+   php artisan install:broadcasting
+   ```
+5. Abra outro terminal e inicialize o reverb:
+   ```bash
+   php artisan reverb:start
+   ```
+6. Abra outro terminal e inicialize a fila:
+   ```bash
+   php artisan queue:listen --queue=emails
+   ```
+7. Crie uma conta no site Mailtrap para testar a funcionalidade ou utilize outro sistema de e-mails de sua preferência. Configure as variáveis de ambiente no arquivo ```.env```.
+   ```
+    MAIL_MAILER=
+    MAIL_HOST=
+    MAIL_PORT=
+    MAIL_USERNAME=
+    MAIL_PASSWORD=
+    MAIL_ENCRYPTION=
+   ```
+9. Por fim, abra a aplicação no navegador na página http://127.0.0.1:8000/emails e teste a funcionalidade.
