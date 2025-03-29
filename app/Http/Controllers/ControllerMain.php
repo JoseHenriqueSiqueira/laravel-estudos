@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Jobs\EmailJob;
+use Inertia\Inertia;
 
 class ControllerMain extends Controller
 {
@@ -24,5 +24,10 @@ class ControllerMain extends Controller
         EmailJob::dispatch($request['emails'] ?? [])->onQueue('emails');
 
         return response()->json('success', 200);
+    }
+
+    public function react()
+    {
+        return Inertia::render('home', ['message' => 'Hello from Laravel!']);
     }
 }

@@ -13,3 +13,5 @@ Route::prefix('emails')->group(function () {
     Route::get('/', [ControllerMain::class, 'emails']);
     Route::post('/enviar', [ControllerMain::class, 'emailsQueue'])->name('emailsQueue');
 });
+
+Route::get('/react', [ControllerMain::class, 'react']);
